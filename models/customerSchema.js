@@ -20,6 +20,7 @@ var customerSchema = new Schema({
     type: Number,
     maxlength: 10,
     trim: true,
+    default:'',
     //unique: true,
     //required:'Email address is required',
     //match: [/\d{3}\d{3}\d{4}/, 'Please enter a valid phone number'] 
@@ -27,26 +28,32 @@ var customerSchema = new Schema({
   address1: {
     type: String,
     maxlength:20,
+    default:'',
   },
   address2: {
     type: String,
     maxlength:30,
+    default:'',
   },
   city: {
     type: String,
     maxlength:10,
+    default:'',
   },
   state: {
     type: String,
     maxlength:10,
+    default:'',
   },
   country: {
     type: String,
     maxlength:5,
+    default:'',
   },
   postalcode: {
     type: String,
     maxlength:6,
+    default:'',
   },
   /*status: {
     type: [{

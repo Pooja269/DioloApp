@@ -1,10 +1,16 @@
-login
+//login
 'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
 var loginSchema = new Schema({
+  user_name:{
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
   email: {
     type: String,
     trim: true,
@@ -26,7 +32,10 @@ var loginSchema = new Schema({
     minlength:8,
     maxlength:100,
     required:true,
-  }
+  },
+  user_type:{
+    type: String,
+  },
   /*status: {
     type: [{
       type: String,
@@ -34,6 +43,10 @@ var loginSchema = new Schema({
     }],
     default: ['pending']
   }*/
+  resetPasswordLink:{
+    data: String,
+    default: '',
+  } 
 });
 
 module.exports=mongoose.model('login', loginSchema);

@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var customerSchema = new Schema({
+var serviceProviderSchema = new Schema({
   name: {
     type: String,
     required: 'Kindly enter the name of the task'
@@ -21,39 +21,55 @@ var customerSchema = new Schema({
     maxlength: 10,
     trim: true,
     unique: true,
-    //required:'Email address is required',
+    required:'Phone number is required',
     //match: [/\d{3}\d{3}\d{4}/, 'Please enter a valid phone number'] 
+  },
+  experience:{
+    type: Number,
+    default:'',
+  },
+  timeAvailable:{
+    type: String,
+    default: '',
+  },
+  gender:{
+    type: String,
+    default: '',
+  },
+  serviceName: {
+    type: String,
+    required: true,
   },
   address1: {
     type: String,
     maxlength:20,
+    default:'',
   },
   address2: {
     type: String,
     maxlength:30,
+    default:'',
   },
   city: {
     type: String,
     maxlength:10,
+    default:'',
   },
   state: {
     type: String,
     maxlength:10,
+    default:'',
   },
   country: {
     type: String,
     maxlength:5,
+    default:'',
   },
   postalcode: {
     type: String,
     maxlength:6,
+    default:'',
   },
-  password: {
-    type: String,
-    minlength:8,
-    maxlength:100,
-    required:true,
-  }
   /*status: {
     type: [{
       type: String,
@@ -63,4 +79,4 @@ var customerSchema = new Schema({
   }*/
 });
 
-module.exports = mongoose.model('customer', customerSchema);
+module.exports = mongoose.model('serviceProvider', serviceProviderSchema);

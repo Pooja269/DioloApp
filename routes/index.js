@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
+mongoose.pluralize(null);
 const {mongoUrl} = require('../bin/keys');
 const bodyParser=require('body-parser');
 var authUsers=require('../controllers/authUserController');
@@ -28,11 +29,15 @@ mongoose.connection.on('error',(err)=>{
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 router.post('/login',authUsers.customerLogin);
-router.post('/signup',authUsers.customerSignup);
-/*router.post('/signin',async (req,res,next)=>{
-  res.json('hi');
-  console.log("index");
-});*/
+router.post('/signup-customer',authUsers.customerSignup);
+router.post('/signup-provider',authUsers.professionalSignup);
+router.put('/forgot-password',authUsers.forgotPassword);
+router.put('/reset-password',authUsers.resetPassword);
+router.get('/google-signup',authUsers.googleSignup)
+router.post('/google-authentication',authUsers.googleAuth)
+//router.post('/sendOtp',authUsers.sendOtp);
+//router.post('/verify',authUsers.verifyOtp);
+
 
 app.listen(PORT,()=>{
   console.log("server running "+PORT)
